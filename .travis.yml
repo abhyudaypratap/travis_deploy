@@ -1,10 +1,18 @@
 language: python
-sudo: false
 python:
 - '3.6.4'
 
-deploy:
-  provider: script
-  script: bash scripts/deploy.sh
-  on:
-    branch: master
+addons:
+  apt:
+    packages:
+      unzip
+      make
+
+before_install:
+- sudo apt install unzip
+- wget https://releases.hashicorp.com/packer/1.4.4/packer_1.4.4_linux_amd64.zip
+- unzip packer_1.4.4_linux_amd64.zip -d packer
+- sudo mv packer /usr/local/bin/
+
+script:
+- flake8 .
