@@ -1,0 +1,30 @@
+{
+    "builders": [{
+        "type": "amazon-ebs",
+        "access_key": "{{user `aws_access_key`}}",
+        "secret_key": "{{user `aws_secret_key`}}",
+        "region": "us-east-1",
+        "source_ami": "ami-02eac2c0129f6376b",
+        "instance_type": "t2.micro",
+        "ssh_username": "centos",
+        "encrypt_boot": true,
+        "ami_name": "webapp-base-{{timestamp}}",
+        "associate_public_ip_address": false,
+        "tags": {
+            "Name": "WebApp"
+        }
+    }],
+    "provisioners": [{
+        "type": "shell",
+        "script": "install.sh"
+    },{
+        "type": "file",
+        "source": "{{template_dir}}/../../travis_deploy",
+        "destination": "/home/centos"
+    }],
+    "post-processors": [{
+      "type": "manifest",
+      "output": "manifest.json",
+      "strip_path": true
+    }]
+}
