@@ -1,3 +1,8 @@
+language: python
+sudo: false
+python:
+- '3.6.4'
+
 deploy:
   provider: script
   script: bash scripts/deploy.sh
