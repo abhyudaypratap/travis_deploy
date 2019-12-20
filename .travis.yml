@@ -29,5 +29,5 @@ deploy:
   - provider: script
     # preserve patch to packer configuration by skipping cleanup
     skip_cleanup: true
-    script: make packer build
+    script: make packer-build
 
