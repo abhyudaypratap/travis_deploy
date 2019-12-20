@@ -23,6 +23,11 @@ before_install:
 
 script:
 - flake8 .
-- make packer-build
-- make terraform-init
-- make terraform-apply
+
+deploy:
+  # create an image when tagged
+  - provider: script
+    # preserve patch to packer configuration by skipping cleanup
+    skip_cleanup: true
+    script: make packer build
+

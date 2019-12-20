@@ -4,4 +4,7 @@ resource "aws_instance" "webapp" {
   subnet_id              = "subnet-0343605217d0dd2ad"
   instance_type          = "${var.instance_type}"
   key_name               = "epi"
+  tags = {
+    Name = "Deploy_test"
+  }
 }
