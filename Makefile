@@ -18,5 +18,5 @@ terraform-plan:
 
 terraform-apply:
 	cd terraform/tf_ec2 && \
-	terraform apply && \
+	terraform apply -auto-approve && \
 	cd -
