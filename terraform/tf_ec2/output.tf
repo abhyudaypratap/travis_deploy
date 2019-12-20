@@ -1,3 +1,3 @@
 output "instance_ip_address" {
-  value = "${aws_instance.ocrhiem.public_ip}"
+  value = "${aws_instance.webapp.public_ip}"
 }
