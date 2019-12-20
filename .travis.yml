@@ -17,8 +17,13 @@ before_install:
 - wget https://releases.hashicorp.com/packer/1.4.4/packer_1.4.4_linux_amd64.zip
 - unzip packer_1.4.4_linux_amd64.zip -d packer
 - sudo mv packer/packer /usr/local/bin/
+- wget https://releases.hashicorp.com/terraform/0.12.11/terraform_0.12.11_linux_amd64.zip
+- unzip terraform_0.12.11_linux_amd64.zip
+- sudo mv terraform /usr/local/bin/terraform
 - touch .env
 
 script:
 - flake8 .
 - make packer-build
+- make terraform-init
+- make terraform-apply
